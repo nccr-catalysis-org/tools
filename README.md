@@ -1,3 +1,5 @@
+To suggest any change: fork, edit, create a pull request
+
 The script html_excel.py is intended to facilitate the editing of the list of tools.  
 * Run `python html_excel.py index.html tools_list.xlsx` to obtain an excel file with all the URLs, tool names, and descriptions.
 * Add the desired tool names, URLs, and descriptions.
