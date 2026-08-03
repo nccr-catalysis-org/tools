@@ -5,6 +5,7 @@ The script html_excel.py is intended to facilitate the editing of the list of to
 * Run `python html_excel.py index.html tools_list.xlsx` to obtain an excel file with all the URLs, tool names, and descriptions.
 * Add the desired tool names, URLs, and descriptions.
 * Run `python html_excel.py tools_list.xlsx index_updated.html`.
+    * Alternatively you can update from a .csv instead of a .xlsx file: `python html_excel.py tools_list.csv index_updated.html`
 * Verify the file by opening with your browser.
 * Replace index.html (`mv index_updated.html index.html`)
 

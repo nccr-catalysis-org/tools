@@ -55,7 +55,7 @@ def html_to_excel(html_file, excel_file):
 
 def excel_to_html(excel_file, outfile):
     """
-    Reads link data from an Excel spreadsheet, removes duplicate URLs,
+    Reads link data from a CSV or Excel file, removes duplicate URLs,
     and generates a styled HTML file.
     """
     if not os.path.exists(excel_file):
@@ -63,8 +63,11 @@ def excel_to_html(excel_file, outfile):
         return
 
     print(f"Reading '{excel_file}'...")
-    df = pd.read_excel(excel_file)
-    
+    if excel_file.endswith(".csv"):
+        df = pd.read_csv(excel_file)
+    else:
+        df = pd.read_excel(excel_file)
+
     # Ensure columns exist and fill missing values with empty strings
     for col in ['URL', 'Name', 'Description']:
         if col not in df.columns:
@@ -129,8 +132,9 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         raise ValueError(""""You can run the functions independently or use in one of the following ways:
                          - python html_excel.py index.html tool_list.xlsx
-                         - python html_excel.py tool_list.html index_updated.html""")
+                         - python html_excel.py tool_list.html index_updated.html
+                         - python html_excel.py tool_list.csv index_updated.html""")
     if sys.argv[1].endswith(".html"):
         html_to_excel(sys.argv[1], sys.argv[2])
-    if sys.argv[1].endswith(".xlsx"):
+    if sys.argv[1].endswith((".xlsx", ".csv")):
         excel_to_html(sys.argv[1], sys.argv[2])
